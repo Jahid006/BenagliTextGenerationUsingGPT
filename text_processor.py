@@ -203,16 +203,3 @@ CMD Interface:
    --version (show version)  type: bool default: false
    --minloglevel (Messages logged at a lower level than this don't actually get logged anywhere)  type: int default: 0
 """
-
-
-
-               
-
-    
-
-
-
-
-
-
-
