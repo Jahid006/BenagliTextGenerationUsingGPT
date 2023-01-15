@@ -1,0 +1,7 @@
+data
+**__pycache__**
+notebooks
+artifact
+**.ipynb
+__*
+modeling/modeling.py
