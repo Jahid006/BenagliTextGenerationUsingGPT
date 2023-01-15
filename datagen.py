@@ -90,20 +90,14 @@ if __name__ == "__main__":
     )
     print(sample_text)
     for x, y in generator:
-        encoder_input = x['input_text'][0]
-        decoder_input = x['target_text'][0]
+        input_text = x['input_text']
+        target_text = x['target_text']
 
-        y = y[0].reshape(-1)
-
-        encoder_input, decoder_input, y = map(
-            lambda z : [int(i) for i in z],
-            [
-                encoder_input,
-                decoder_input,
-                y
-                ]
+        input_text, target_text = map(
+            lambda z: [int(i) for i in z.numpy()],
+            [input_text, target_text]
         )
 
-        for tokens in [encoder_input, decoder_input, y]:
+        for tokens in [input_text, target_text]:
             t = sp_tokenizer.tokenizer.DecodeIds(tokens)
             print(tokens, t)
