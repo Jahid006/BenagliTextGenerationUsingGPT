@@ -89,9 +89,9 @@ if __name__ == "__main__":
         max_len=128
     )
     print(sample_text)
-    for x, y in generator:
-        input_text = x['input_text']
-        target_text = x['target_text']
+    for data in generator:
+        input_text = data['input_text']
+        target_text = data['target_text']
 
         input_text, target_text = map(
             lambda z: [int(i) for i in z.numpy()],

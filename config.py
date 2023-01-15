@@ -1,5 +1,5 @@
 DATA_PATH = 'data/text_512.txt'
-MODEL_SAVE_DIR = './artifact/exp-2'
+MODEL_SAVE_DIR = './artifact/exp-3'
 
 LOAD_PRETRAIN = False
 PRETRAINED_MODEL_PATH = 'artifact/exp-2/000043056_000008_loss_0.026768_vloss_0.025756.pt'

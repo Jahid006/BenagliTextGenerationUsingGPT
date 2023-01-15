@@ -104,8 +104,9 @@ def main():
         epochs=cfg.EPOCHS,
         summary_writter=SummaryWriter(cfg.MODEL_SAVE_DIR),
         logging=logging,
-        saving_step=1500,# 5*len(train_generator)//(cfg.BATCH_SIZE),
-        steps_per_epoch=len(train_generator)
+        saving_step=1500, # 5*len(train_generator)//(cfg.BATCH_SIZE),
+        steps_per_epoch=len(train_generator),
+        model_saving_dir=cfg.MODEL_SAVE_DIR
     )
 
 

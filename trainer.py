@@ -6,7 +6,8 @@ def train(
     model, optimizer, scheduler,
     criterion, device, train_dataset, test_dataset,
     summary_writter=None, epochs=10, logging=None,
-    saving_step=100, steps_per_epoch=None
+    saving_step=100, steps_per_epoch=None,
+    model_saving_dir='artifact'
     
 ):
     print("Saving Steps: ", saving_step)
@@ -54,7 +55,7 @@ def train(
                 )
 
                 save_model_path = (
-                    "artifact/exp-2/"
+                    f"{model_saving_dir}/"
                     + f'{steps:09}_{epoch:06}_loss_{avg_train_loss}_vloss_{avg_val_loss}.pt'
                 )
 
@@ -77,7 +78,7 @@ def train_batch(model, data, optimizer, criterion, device):
 
     logits = model(input_texts)
 
-    loss = criterion(logits.view(-1, 8000), target_text.view(-1))
+    loss = criterion(logits.view(-1, logits.shape[-1]), target_text.view(-1))
 
     optimizer.zero_grad()
     loss.backward()
@@ -96,6 +97,7 @@ def eval_batch(model, data, criterion, device):
         target_text = data['target_text'].to(device)
 
         logits = model(input_texts)
-        loss = criterion(logits.view(-1, 8000), target_text.view(-1)).item()
+        loss = criterion(logits.view(-1, logits.shape[-1]), target_text.view(-1))
+        loss = loss.item()
 
     return loss
