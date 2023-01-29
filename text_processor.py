@@ -26,12 +26,12 @@ class Tokenizer:
     def load(self):
         self.initialize()
         self.tokenizer = spm.SentencePieceProcessor()
-        self.tokenizer.load(f'{self.model_prefix}.{str(self.vocab_size)}.model')
+        self.tokenizer.load(f'{self.model_prefix}/tokenizer.{str(self.vocab_size)}.model')
 
     def initialize(self):
 
         try:
-            vocab_file = open(f'{self.model_prefix}.{str(self.vocab_size)}.vocab', 'r')
+            vocab_file = open(f'{self.model_prefix}/tokenizer.{str(self.vocab_size)}.vocab', 'r')
         except Exception as e:
             print(f'{e}: {self.model_prefix}.{str(self.vocab_size)}.vocab file not found.\
                    Train your model first (-_-)')

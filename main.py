@@ -9,6 +9,7 @@ from torch.utils.tensorboard import SummaryWriter
 import trainer
 from text_processor import Tokenizer
 from modeling import GPT
+import utils
 import config as cfg
 
 random.seed(37)
@@ -93,6 +94,13 @@ def main():
         level=logging.DEBUG
     )
 
+    if cfg.LOAD_PRETRAIN:
+        model = utils.load_pretrained_model(
+            model=model,
+            saved_path=cfg.PRETRAINED_MODEL_PATH
+        )
+        # to do: load optimizer, schedular
+
     model = trainer.train(
         model=model,
         optimizer=optimizer,
@@ -104,7 +112,7 @@ def main():
         epochs=cfg.EPOCHS,
         summary_writter=SummaryWriter(cfg.MODEL_SAVE_DIR),
         logging=logging,
-        saving_step=1500, # 5*len(train_generator)//(cfg.BATCH_SIZE),
+        saving_step=1500,  # 5*len(train_generator)//(cfg.BATCH_SIZE),
         steps_per_epoch=len(train_generator),
         model_saving_dir=cfg.MODEL_SAVE_DIR
     )

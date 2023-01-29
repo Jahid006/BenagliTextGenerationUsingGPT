@@ -1,14 +1,14 @@
-DATA_PATH = 'data/text_512.txt'
+DATA_PATH = 'data/opnion_text_512.txt'
 MODEL_SAVE_DIR = './artifact/exp-3'
 
 LOAD_PRETRAIN = False
-PRETRAINED_MODEL_PATH = 'artifact/exp-2/000043056_000008_loss_0.026768_vloss_0.025756.pt'
+PRETRAINED_MODEL_PATH = 'artifact/exp-3/000005408_000012_loss_0.02866_vloss_0.028456.pt'
 
 MAX_LEN = 192
 EMBEDDING_DIM = 384
 BATCH_SIZE = 96
 
-TOKENIZER_PATH = "./vocab/vocab_complete/tokenizer"
+TOKENIZER_PATH = "./tokenizer/vocab_complete"
 TOKENIZER_MAX_SEQ = 192
 TOKENIZER_VOCAB_SIZE = 8000
 

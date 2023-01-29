@@ -42,6 +42,7 @@ def generate_text(
 ):
 
     tokenized_prefix = tokenizer.tokenize(prefix_text)['input_ids']
+    print(f"Length of tokenized Input is {len(tokenized_prefix)}")
 
     num_tokens_generated = 0
     tokens_generated = []
@@ -98,7 +99,8 @@ def main():
 
     model = utils.load_pretrained_model(
         model=model,
-        saved_path=cfg.PRETRAINED_MODEL_PATH
+        saved_path=cfg.PRETRAINED_MODEL_PATH,
+        device=device
 
     )
 
@@ -107,8 +109,9 @@ def main():
     # random.shuffle(data)
     # data = data[:100]
 
-    text = "কিন্তু যে বুড়িগঙ্গাকে কেন্দ্র করে ঢাকা শহর গড়ে উঠেছে, সেই বুড়িগঙ্গা দূষণ ও দখলের কারণে একটি মুমূর্ষু নদীতে পরিণত হয়েছে। কেবল তা-ই নয়, ঢাকা শহরের ভেতর দিয়ে যে পঞ্চাশটির অধিক খাল ছিল, সেসবও দখল হয়ে গেছে।"
-
+    text = """
+    put your text prompt here
+    """
     output = generate_text(
         model=model,
         tokenizer=vectorizer,
