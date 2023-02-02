@@ -1,6 +1,6 @@
 # Bengali Text Generation using GPT
 
-### Trained on Prothom Alo Opnion Section(2011-2019)
+### Trained on Prothom Alo Opinion Section(2011-2019)
 
 ```
 Directory Structure
