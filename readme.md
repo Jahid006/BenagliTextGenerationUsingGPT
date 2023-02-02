@@ -104,6 +104,21 @@ Requires git, python, and conda.
     ```
     - main.py has a complete walkthrough of training process
 4. Follow text_generation_demo.py for inference
+5. Sample Prediction
+    ```python
+    import config as cfg
+
+    text = জেনারেল এরশাদের সিদ্ধান্ত অমান্য করে তাঁর স্ত্রী রওশন এরশাদ যে আওয়ামী লীগের সঙ্গে সমঝোতা করে ফেলেছিলেন, সে কথাও সবার জানা। রওশন এরশাদের সিদ্ধান্তেই সেদিন জাতীয় পার্টির অন্য নেতারা মনোনয়নপত্র জমা দিয়েছেন এবং নির্বাচনে প্রতিদ্বন্দ্বিতা করেছেন। জেনারেল এরশাদের নামে যেসব আসনে মনোনয়নপত্র জমা পড়েছিল, সেগুলোর যথার্থতা নিয়েও তখন প্রশ্ন উঠেছিল।
+    output = text_generation_demo.generate_text(
+        model=model,
+        tokenizer=sp_tokenizer,
+        prefix_text=text,
+        max_seq_len=cfg.MAX_LEN,
+        max_generated_text=64,
+        device=device
+    )
+    output = "এরশাদের পতনের পর বিএনপি-জামায়াতের নেতারা একপর্যায়ে আওয়ামী লীগকে ক্ষমতার অংশী করেছিলেন। এরশাদ ক্ষমতার অংশীদার ছিলেন।"
+    ```
 
 
 ## Coming Soon
