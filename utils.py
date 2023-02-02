@@ -53,7 +53,7 @@ def load_pretrained_model(model, saved_path, device='cuda', key='model'):
 
     if mis_matched_layers:
         print(f"{len(mis_matched_layers)} Mismatched layers found.")
-        print(mis_matched_layers)  
+        print(mis_matched_layers)
    
     model.load_state_dict(new_state_dict, strict=True)
     print('model loaded successfully')

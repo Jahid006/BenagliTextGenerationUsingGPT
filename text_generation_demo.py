@@ -44,8 +44,8 @@ def generate_text(
     tokenized_prefix = tokenizer.tokenize(prefix_text)['input_ids']
     print(f"Length of tokenized Input is {len(tokenized_prefix)}")
 
-    if len(tokenized_prefix) > 100:
-        tokenized_prefix = tokenized_prefix[-100:]
+    if len(tokenized_prefix) > max_seq_len//2:
+        tokenized_prefix = tokenized_prefix[-(max_seq_len//2):]
 
     num_tokens_generated = 0
     tokens_generated = []
@@ -84,7 +84,7 @@ def prediction_step(model, input_text, device):
     return output
 
 
-def main():
+def predict(text):
     device = torch.device(
         'cuda' if torch.cuda.is_available() else 'cpu'
     )
@@ -103,18 +103,8 @@ def main():
         model=model,
         saved_path=cfg.PRETRAINED_MODEL_PATH,
         device=device
-
     )
 
-    data = open(cfg.DATA_PATH, 'r').readlines()
-    import random
-    random.shuffle(data)
-    data = data[:200]
-
-    text = """
-    put your text prompt here
-    """
-    text = data[6]
     output = generate_text(
         model=model,
         tokenizer=vectorizer,
@@ -124,9 +114,13 @@ def main():
         device=device
     )
     
-    with open('__sample_pred__.txt', 'w') as f:
+    with open('sample_prediction.txt', 'w') as f:
         f.write(text+'.'*10+output[1])
 
 
 if __name__ == "__main__":
-    main()
+    text = """
+    জেনারেল এরশাদের সিদ্ধান্ত অমান্য করে তাঁর স্ত্রী রওশন এরশাদ যে আওয়ামী লীগের সঙ্গে সমঝোতা করে ফেলেছিলেন, সে কথাও সবার জানা। রওশন এরশাদের সিদ্ধান্তেই সেদিন জাতীয় পার্টির অন্য নেতারা মনোনয়নপত্র জমা দিয়েছেন এবং নির্বাচনে প্রতিদ্বন্দ্বিতা করেছেন।
+    জেনারেল এরশাদের নামে যেসব আসনে মনোনয়নপত্র জমা পড়েছিল, সেগুলোর যথার্থতা নিয়েও তখন প্রশ্ন উঠেছিল। 
+    """
+    predict(text)

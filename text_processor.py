@@ -133,7 +133,7 @@ class Tokenizer:
 
 
 
-""" Documentations
+""" Reference for training a tokenizer
 
 0. https://github.com/google/sentencepiece
 

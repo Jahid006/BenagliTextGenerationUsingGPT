@@ -6,7 +6,21 @@ import torch
 
 
 class DataGenerator(torch.utils.data.Dataset):
-    def __init__(self, data, tokenizer, preprocessor, max_len):
+    def __init__(
+        self,
+        data: list(str),
+        tokenizer,
+        preprocessor: callable,
+        max_len: int = 512
+    ):
+        """Creates a Torch Dataset from a List of Text Sequences
+
+        Args:
+            data (list): list of text sequence
+            tokenizer (text_processor.Tokenizer): Tokenizer Object
+            preprocessor (callable): Text preprocessor
+            max_len (int, optional): Max Sequmce Length. Defaults to 512.
+        """
         self.dataset = data
         self.tokenizer = tokenizer
         self.preprocessor = preprocessor
@@ -15,6 +29,11 @@ class DataGenerator(torch.utils.data.Dataset):
         print(f"Total {len(data)} Sentence found!!!")
 
     def _shorten_data(self, dataset_split=.1):
+        """Shortens the dataset by given fraction
+
+        Args:
+            dataset_split (float, optional): _description_. Defaults to .1.
+        """
         print('Shortening The Dataset to:', str(100*dataset_split) + '%')
 
         selected_idx = np.arange(len(self.dataset))

@@ -15,7 +15,7 @@ import config as cfg
 random.seed(37)
 
 
-def main():
+def main(cfg):
 
     device = torch.device(
         'cuda' if torch.cuda.is_available() else 'cpu'
@@ -119,4 +119,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main(cfg)
