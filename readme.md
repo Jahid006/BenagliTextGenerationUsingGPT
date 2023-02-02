@@ -3,15 +3,15 @@
 
 ```
 Directory Structure
-├── artifact                                                             - Artifact directory
+├── artifact                                                             - Artifact directory(will be created automatically)
 │   └── exp-1                                                            - Experiment directory
 │       ├── model_step_41600_epoch_099_loss_0.024063_vloss_0.025048.pt   - Saved model
 │       ├── config.py                                                    - Experiment config
 │       ├── events.out.tfevents                                          - Tensorboard logger
 │       └── training.log                                                 - Loggings
 ├── config.py                                                            - config file
-├── data
-│   └── opnion_text_512.zip                                              - Text data, unzip it
+├── text_data
+│   └── prothom_alo_opnion_section(2011-2019).zip                        - Text data, unzip it
 ├── datagen.py                                                           - Dataloader
 ├── main.py                                                              - Script for Training
 ├── modeling                                                             - Model Directory
