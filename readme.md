@@ -123,5 +123,4 @@ Requires git, python, and conda.
 
 
 ## Coming Soon
-* Details Documentation
-* Function Docstring
+* Documentation
