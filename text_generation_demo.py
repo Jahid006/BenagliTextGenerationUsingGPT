@@ -37,17 +37,19 @@ def do_sample_token(logits, topk=3):
 def generate_text(
     model, tokenizer, prefix_text,
     max_seq_len=192,
-    max_generated_text=64,
+    max_generated_text=32,
     device=None
 ):
 
     tokenized_prefix = tokenizer.tokenize(prefix_text)['input_ids']
     print(f"Length of tokenized Input is {len(tokenized_prefix)}")
 
+    if len(tokenized_prefix) > 100:
+        tokenized_prefix = tokenized_prefix[-100:]
+
     num_tokens_generated = 0
     tokens_generated = []
     while num_tokens_generated <= max_generated_text:
-
         pad_len = max_seq_len - len(tokenized_prefix)
         start_index = len(tokenized_prefix) - 1
 
@@ -104,14 +106,15 @@ def main():
 
     )
 
-    # data = open(DATA_PATH, 'r').readlines()
-    # import random
-    # random.shuffle(data)
-    # data = data[:100]
+    data = open(cfg.DATA_PATH, 'r').readlines()
+    import random
+    random.shuffle(data)
+    data = data[:200]
 
     text = """
     put your text prompt here
     """
+    text = data[6]
     output = generate_text(
         model=model,
         tokenizer=vectorizer,
@@ -121,8 +124,6 @@ def main():
         device=device
     )
     
-    print(output[1])
-
     with open('__sample_pred__.txt', 'w') as f:
         f.write(text+'.'*10+output[1])
 
