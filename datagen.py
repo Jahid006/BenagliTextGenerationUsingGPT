@@ -8,7 +8,7 @@ import torch
 class DataGenerator(torch.utils.data.Dataset):
     def __init__(
         self,
-        data: list(str),
+        data: list[str],
         tokenizer,
         preprocessor: callable,
         max_len: int = 512
