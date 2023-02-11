@@ -1,4 +1,6 @@
 # Bengali Text Generation using GPT
+GPT, or Generative Pre-trained Transformer, is a state-of-the-art natural language processing model developed by OpenAI. It is a deep learning model trained on a massive amount of text data and is capable of generating human-like text with impressive coherence and fluency.
+This repo delves into training a GPT model on a tiny Bengali Corpus. 
 
 ### Trained on Prothom Alo Opinion Section(2011-2019)
 
